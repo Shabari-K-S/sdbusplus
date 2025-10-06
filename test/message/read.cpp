@@ -81,7 +81,7 @@ class ReadTest : public testing::Test
         EXPECT_CALL(mock, sd_bus_message_read_array(nullptr, type, testing::_,
                                                     testing::_))
             .WillOnce(
-                DoAll(testing::Invoke(read_array_callback<T>), Return(0)));
+                DoAll(read_array_callback<T>, Return(0)));
     }
 
     void expect_verify_type(char type, const char* contents, int ret)
